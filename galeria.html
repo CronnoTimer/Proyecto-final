@@ -1,40 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Los Vikingos "Food Truck" - Galería</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Los Vikingos - Galería</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Contenedor general centrado */
+    .carousel {
+      max-width: 800px;
+      margin: 2rem auto;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #333;
+      background: white;
+      border-radius: 8px;
+    }
+
+    /* Ocultamos radio botones */
+    input[type="radio"] {
+      display: none;
+    }
+
+    /* Cada slide - grupo de imágenes */
+    .slides {
+      display: flex;
+      width: 300%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    /* Cada sección será un slide con 100% ancho */
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+      padding: 1rem;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    /* Imágenes dentro de cada slide */
+    .slide img {
+      width: 30%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .slide img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Navegación (flechas) */
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      height: 30px;
+      background-color: rgba(51,51,51,0.7);
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 50%;
+      user-select: none;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+
+    .nav-prev {
+      left: 10px;
+    }
+
+    .nav-next {
+      right: 10px;
+    }
+
+    /* Cambiar slide según radio button */
+    #slide1:checked ~ .slides {
+      transform: translateX(0%);
+    }
+    #slide2:checked ~ .slides {
+      transform: translateX(-100%);
+    }
+    #slide3:checked ~ .slides {
+      transform: translateX(-200%);
+    }
+
+    /* Descripción debajo de cada grupo */
+    .caption {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+  </style>
 </head>
 <body>
-    <!-- Encabezado con navegación -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Menú Principal</a></li>
-                <li><a href="menuComida.html">Menú Comida</a></li>
-                <li><a href="galeria.html">Galería</a></li>
-                <li><a href="promociones.html">Promociones</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Encabezado con navegación -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Menú Principal</a></li>
+        <li><a href="menu_comida.html">Menú Comida</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="promociones.html">Promociones</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Contenido principal de la galería -->
-    <main>
-        <section id="galeria">
-            <h2>Galería</h2>
-            <div class="galeria-grid">
-                <img src="foto1.jpg" alt="Foto del restaurante">
-                <img src="foto2.jpg" alt="Comida preparada">
-                <img src="foto3.jpg" alt="Evento en el restaurante">
-                <img src="foto4.jpg" alt="Interior del restaurante">
-            </div>
-        </section>
-    </main>
+  <!-- Contenedor carrusel con radio buttons ocultos para control -->
+  <main>
 
-    <!-- Pie de página con datos de contacto -->
-    <footer>
-        <p>Contacto: Nombre: Estudiante, Materia: Desarrollo Web, Correo: ejemplo@restaurante.com, Teléfono: 123-456-7890</p>
-    </footer>
+    <!-- Radio buttons para control del carrusel -->
+    <input type="radio" name="slider" id="slide1" checked />
+    <input type="radio" name="slider" id="slide2" />
+    <input type="radio" name="slider" id="slide3" />
+
+    <div class="carousel">
+
+      <!-- Flechas para controlar -->
+      <label for="slide3" class="nav-arrow nav-prev">&#10094;</label>
+      <label for="slide2" class="nav-arrow nav-next">&#10095;</label>
+
+      <div class="slides">
+        <!-- Grupo 1: Food Truck y Restaurante Callejero -->
+        <div class="slide">
+          <img src="vikingos_foto1.jpg" alt="Food Truck Los Vikingos" />
+          <img src="vikingos_foto5.jpg" alt="Food Truck Laterales" />
+          <img src="vikingos_foto6.jpg" alt="Food Truck Posterior" />
+        </div>
+        <div class="caption">Food Truck Los Vikingos</div>
+
+        <!-- Grupo 2: Comida -->
+        <div class="slide">
+          <img src="vikingos_foto2.jpg" alt="Tacos Vikingos" />
+          <img src="vikingos_foto3.jpg" alt="Hot Dogs Perrones" />
+          <img src="vikingos_foto4.jpg" alt="Hamburguesas Especiales" />
+        </div>
+        <div class="caption">Nuestros Platillos</div>
+
+        <!-- Grupo 3: Eventos -->
+        <div class="slide">
+          <img src="vikingos_foto7.jpg" alt="Evento Los Vikingos" />
+          <img src="vikingos_foto8.jpg" alt="Servicio a domicilio" />
+          <img src="vikingos_foto9.jpg" alt="Clientes disfrutando" />
+        </div>
+        <div class="caption">Eventos y Clientes</div>
+      </div>
+
+      <!-- Cambiar las flechas para el siguiente grupo -->
+      <label for="slide1" class="nav-arrow nav-prev">&#10094;</label>
+      <label for="slide3" class="nav-arrow nav-next">&#10095;</label>
+
+      <label for="slide2" class="nav-arrow nav-prev">&#10094;</label>
+      <label for="slide1" class="nav-arrow nav-next">&#10095;</label>
+
+    </div>
+  </main>
+
+  <!-- Pie de página con datos de contacto -->
+  <footer>
+    <p>
+      Contacto: Nombre: Estudiante, Materia: Desarrollo Web, Correo: ejemplo@restaurante.com,
+      Teléfono: 123-456-7890
+    </p>
+  </footer>
 </body>
 </html>
