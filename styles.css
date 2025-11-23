@@ -76,7 +76,7 @@ section {
 .producto {
     display: flex;
     margin-bottom: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #f14d4d;
     padding: 1rem;
     background-color: white;
 }
