@@ -10,7 +10,7 @@ body {
 
 /* Estilos para el encabezado y navegación */
 header {
-    background-color: #333;
+    background-color: #e85427;
     color: white;
     padding: 1rem;
     display: flex; /* Cambiado para flexbox y alinear logo y nav */
@@ -103,7 +103,7 @@ section {
 
 /* Estilos para promociones */
 .promocion {
-    border: 1px solid #ddd;
+    border: 1px solid #f14d4d;
     padding: 1rem;
     margin-bottom: 1rem;
     background-color: white;
@@ -111,7 +111,7 @@ section {
 
 /* Estilos para el pie de página */
 footer {
-    background-color: #333;
+    background-color: #e85427;
     color: white;
     text-align: center;
     padding: 1rem;
