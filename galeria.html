@@ -5,16 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Los Vikingos - Galería</title>
   <link rel="stylesheet" href="styles.css" />
- <style>
+  <style>
     /* Contenedor general centrado */
-    .carousel {
-      max-width: 800px;
+    .galeria-container {
+      max-width: 900px;
       margin: 2rem auto;
-      position: relative;
-      overflow: hidden;
-      border: 2px solid #333;
       background: white;
+      border: 2px solid #333;
       border-radius: 8px;
+      padding: 1rem;
     }
 
     /* Ocultamos radio botones */
@@ -22,27 +21,55 @@
       display: none;
     }
 
-    /* Cada slide - grupo de imágenes */
-    .slides {
-      display: flex;
-      width: 300%;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    /* Cada sección será un slide con 100% ancho */
-    .slide {
-      width: 100%;
-      flex-shrink: 0;
-      padding: 1rem;
-      box-sizing: border-box;
+    /* Tabs (botones para seleccionar sección) */
+    .tabs {
       display: flex;
       justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .tab-label {
+      padding: 0.5rem 1rem;
+      background-color: #ddd;
+      color: #333;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 0 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab-label:hover {
+      background-color: #bbb;
+    }
+
+    /* Mostrar tab activo */
+    input[type="radio"]:checked + .tab-label {
+      background-color: #333;
+      color: white;
+    }
+
+    /* Contenido de cada sección (oculto por defecto) */
+    .tab-content {
+      display: none;
+      padding: 1rem;
+    }
+
+    /* Mostrar contenido cuando el radio button esté checked */
+    #tab1:checked ~ .tab-content.tab1,
+    #tab2:checked ~ .tab-content.tab2,
+    #tab3:checked ~ .tab-content.tab3 {
+      display: block;
+    }
+
+    /* Grid para las imágenes */
+    .imagenes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 1rem;
     }
 
-    /* Imágenes dentro de cada slide */
-    .slide img {
-      width: 30%;
+    .imagenes-grid img {
+      width: 100%;
       height: 180px;
       object-fit: cover;
       border-radius: 6px;
@@ -51,46 +78,8 @@
       transition: transform 0.3s ease;
     }
 
-    .slide img:hover {
+    .imagenes-grid img:hover {
       transform: scale(1.05);
-    }
-
-    /* Navegación (flechas) */
-    .nav-arrow {
-      position: absolute;
-      top: 50%;
-      width: 30px;
-      height: 30px;
-      background-color: rgba(51,51,51,0.7);
-      color: white;
-      font-weight: bold;
-      font-size: 24px;
-      line-height: 30px;
-      text-align: center;
-      cursor: pointer;
-      border-radius: 50%;
-      user-select: none;
-      transform: translateY(-50%);
-      z-index: 10;
-    }
-
-    .nav-prev {
-      left: 10px;
-    }
-
-    .nav-next {
-      right: 10px;
-    }
-
-    /* Cambiar slide según radio button */
-    #slide1:checked ~ .slides {
-      transform: translateX(0%);
-    }
-    #slide2:checked ~ .slides {
-      transform: translateX(-100%);
-    }
-    #slide3:checked ~ .slides {
-      transform: translateX(-200%);
     }
 
     /* Descripción debajo de cada grupo */
@@ -118,54 +107,49 @@
     </nav>
   </header>
 
-  <!-- Contenedor carrusel con radio buttons ocultos para control -->
+  <!-- Contenedor de la galería con tabs -->
   <main>
+    <div class="galeria-container">
+      <!-- Radio buttons ocultos para control de tabs -->
+      <input type="radio" name="tabs" id="tab1" checked />
+      <input type="radio" name="tabs" id="tab2" />
+      <input type="radio" name="tabs" id="tab3" />
 
-    <!-- Radio buttons para control del carrusel -->
-    <input type="radio" name="slider" id="slide1" checked />
-    <input type="radio" name="slider" id="slide2" />
-    <input type="radio" name="slider" id="slide3" />
+      <!-- Tabs (botones) -->
+      <div class="tabs">
+        <label for="tab1" class="tab-label">Food Truck</label>
+        <label for="tab2" class="tab-label">Platillos</label>
+        <label for="tab3" class="tab-label">Eventos</label>
+      </div>
 
-    <div class="carousel">
-
-      <!-- Flechas para controlar -->
-      <label for="slide3" class="nav-arrow nav-prev">&#10094;</label>
-      <label for="slide2" class="nav-arrow nav-next">&#10095;</label>
-
-      <div class="slides">
-        <!-- Grupo 1: Food Truck y Restaurante Callejero -->
-        <div class="slide">
+      <!-- Contenido de cada tab -->
+      <div class="tab-content tab1">
+        <div class="imagenes-grid">
           <img src="galeria/Local2016.jpg" alt="Food Truck Los Vikingos" />
           <img src="galeria/LocalFeria.jpg" alt="Food Truck Laterales" />
           <img src="vikingos_foto6.jpg" alt="Food Truck Posterior" />
         </div>
         <div class="caption">Food Truck Los Vikingos</div>
+      </div>
 
-        <!-- Grupo 2: Comida -->
-        <div class="slide">
+      <div class="tab-content tab2">
+        <div class="imagenes-grid">
           <img src="galeria/Vikingo.jpg" alt="Tacos Vikingos" />
           <img src="galeria/Piojito.jpg" alt="Taco Piojito" />
           <img src="galeria/Hotdogs.jpg" alt="Hot Dogs Perrones" />
           <img src="galeria/Hamburguesa.jpg" alt="Hamburguesas Especiales" />
         </div>
         <div class="caption">Nuestros Platillos</div>
+      </div>
 
-        <!-- Grupo 3: Eventos -->
-        <div class="slide">
+      <div class="tab-content tab3">
+        <div class="imagenes-grid">
           <img src="galeria/Evento.jpg" alt="Evento Los Vikingos" />
           <img src="vikingos_foto8.jpg" alt="Servicio a domicilio" />
           <img src="galeria/Cliente.jpg" alt="Clientes disfrutando" />
         </div>
         <div class="caption">Eventos y Clientes</div>
       </div>
-
-      <!-- Cambiar las flechas para el siguiente grupo -->
-      <label for="slide1" class="nav-arrow nav-prev">&#10094;</label>
-      <label for="slide3" class="nav-arrow nav-next">&#10095;</label>
-
-      <label for="slide2" class="nav-arrow nav-prev">&#10094;</label>
-      <label for="slide1" class="nav-arrow nav-next">&#10095;</label>
-
     </div>
   </main>
 
