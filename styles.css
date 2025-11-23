@@ -59,7 +59,7 @@ main {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 80px; /* Espacio para evitar que el footer tape contenido */
+    /* padding-bottom: 80px; */ /* Eliminado porque el footer ya no es fijo */
 }
 
 section {
@@ -115,23 +115,30 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    /* position: fixed; */ /* Eliminado para que sea estático al final de la página */
+    /* width: 100%; */ /* No necesario sin fixed */
+    /* bottom: 0; */ /* No necesario sin fixed */
 }
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
     header {
-        /*flex-direction: column; /* En móviles, logo arriba y nav abajo */
-        text-align: center;
+        /* flex-direction: column; */ /* Eliminado para mantener horizontal */
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben */
+        justify-content: space-between; /* Mantiene logo izquierda, nav derecha */
+        padding: 0.5rem; /* Reduce padding en móvil */
     }
     .logo {
-        margin-right: 0;
-        margin-bottom: 1rem;
+        width: 60px; /* Reduce tamaño del logo en móvil */
+        height: 60px;
+        margin-right: 0.5rem; /* Reduce margen */
     }
     nav ul {
-        flex-direction: column;
-        justify-content: center;
+        /* flex-direction: column; */ /* Eliminado para mantener horizontal */
+        justify-content: flex-end;
+        font-size: 0.9rem; /* Reduce tamaño de fuente para caber mejor */
+    }
+    nav ul li a {
+        padding: 0.3rem; /* Reduce padding de enlaces */
     }
 }
