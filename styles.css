@@ -135,3 +135,88 @@ footer {
         justify-content: center;
     }
 }
+
+/* Contenedor general centrado */
+    .galeria-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    /* Ocultamos radio botones */
+    input[type="radio"] {
+      display: none;
+    }
+
+    /* Tabs (botones para seleccionar sección) */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .tab-label {
+      padding: 0.5rem 1rem;
+      background-color: #ddd;
+      color: #333;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 0 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab-label:hover {
+      background-color: #bbb;
+    }
+
+    /* Mostrar tab activo */
+    input[type="radio"]:checked + .tab-label {
+      background-color: #333;
+      color: white;
+    }
+
+    /* Contenido de cada sección (oculto por defecto) */
+    .tab-content {
+      display: none;
+      padding: 1rem;
+    }
+
+    /* Mostrar contenido cuando el radio button esté checked */
+    #tab1:checked ~ .tab-content.tab1,
+    #tab2:checked ~ .tab-content.tab2,
+    #tab3:checked ~ .tab-content.tab3 {
+      display: block;
+    }
+
+    /* Grid para las imágenes */
+    .imagenes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .imagenes-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .imagenes-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Descripción debajo de cada grupo */
+    .caption {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #333;
+    }
