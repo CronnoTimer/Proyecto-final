@@ -13,13 +13,31 @@ header {
     background-color: #333;
     color: white;
     padding: 1rem;
+    display: flex; /* Cambiado para flexbox y alinear logo y nav */
+    align-items: center; /* Centra verticalmente el logo y nav */
+    justify-content: space-between; /* Logo a la izquierda, nav a la derecha */
+}
+
+/* Estilos para el logo */
+.logo {
+    width: 80px; /* Tamaño fijo para el logo */
+    height: 80px;
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    /* border-radius: 50%; */ /* Eliminado para forma rectangular */
+    margin-right: 1rem; /* Espacio entre logo y nav */
+}
+
+/* Estilos para la navegación */
+nav {
+    flex-grow: 1; /* Hace que la nav ocupe el espacio restante */
 }
 
 nav ul {
     list-style: none;
     padding: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end; /* Alinea la nav a la derecha */
+    margin: 0;
 }
 
 nav ul li {
@@ -41,6 +59,7 @@ main {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding-bottom: 80px; /* Espacio para evitar que el footer tape contenido */
 }
 
 section {
@@ -96,17 +115,23 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem;
+    position: fixed;
     width: 100%;
     bottom: 0;
-    position: static; /* o eliminar la línea position: fixed */
 }
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
+    header {
+        flex-direction: column; /* En móviles, logo arriba y nav abajo */
+        text-align: center;
+    }
+    .logo {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
     nav ul {
         flex-direction: column;
-    }
-    .producto {
-        flex-direction: column;
+        justify-content: center;
     }
 }
